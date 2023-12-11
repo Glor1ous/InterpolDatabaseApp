@@ -5,13 +5,10 @@ import java.util.Scanner;
 public class InterpolDatabaseApp {
     public static void main(String[] args) {
         InterpolDatabase interpolDatabase = new InterpolDatabase();
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Добро пожаловать в базу данных Интерпола!");
-
-        // Примеры преступников
-        interpolDatabase.addCriminal(new Criminal("Дамер", "Джеффри", "Милуокский монстр", 180, "Светлые", "Татуировок нет", "США", "21 мая 1960 г., Милуоки, Висконсин, США", "серийный убийца", "Неизвестно"));
-        interpolDatabase.addCriminal(new Criminal("Банди", "Тед", "Харизматичный маньяк", 170, "Темные", "Нету", "США", "24 ноября 1946 г., Берлингтон, Вермонт США", "серийный убийца", "Неизвестно"));
 
         while (true) {
             System.out.println("\nВыберите действие:");
@@ -22,7 +19,7 @@ public class InterpolDatabaseApp {
             System.out.println("5 - Выйти из программы");
 
             int choice = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); // Очищаем буфер после ввода числа
 
             switch (choice) {
                 case 1:
@@ -49,7 +46,7 @@ public class InterpolDatabaseApp {
         }
     }
 
-    public static Criminal createCriminal(Scanner scanner) {
+    private static Criminal createCriminal(Scanner scanner) {
         System.out.println("\n=== Добавление нового преступника ===");
         System.out.println("Введите фамилию: ");
         String lastName = scanner.nextLine();
@@ -93,7 +90,7 @@ public class InterpolDatabaseApp {
         return new Criminal(lastName, firstName, nickname, height, hairColor, distinctiveFeatures, citizenship, birthInfo, criminalProfession, lastCrime);
     }
 
-    public static void searchCriminal(InterpolDatabase interpolDatabase, Scanner scanner) {
+    private static void searchCriminal(InterpolDatabase interpolDatabase, Scanner scanner) {
         System.out.println("\n=== Поиск преступника ===");
         System.out.println("Выберите параметр для поиска:");
         System.out.println("1 - По фамилии");
@@ -119,7 +116,7 @@ public class InterpolDatabaseApp {
         }
     }
 
-    public static void deleteCriminal(InterpolDatabase interpolDatabase, Scanner scanner) {
+    private static void deleteCriminal(InterpolDatabase interpolDatabase, Scanner scanner) {
         System.out.println("\n=== Удаление преступника ===");
         System.out.println("Введите фамилию преступника, которого вы хотите удалить: ");
         String lastNameToDelete = scanner.nextLine();
@@ -131,7 +128,7 @@ public class InterpolDatabaseApp {
         }
     }
 
-    public static void viewInterpolDatabase(InterpolDatabase interpolDatabase) {
+    private static void viewInterpolDatabase(InterpolDatabase interpolDatabase) {
         System.out.println(interpolDatabase.toString());
     }
 }
